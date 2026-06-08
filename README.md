@@ -1,5 +1,5 @@
-#Sistema de Detetive Investigativo
-##Integrantes
+# Sistema de Detetive Investigativo
+## Integrantes
 Érica Gonçalves Domingos Do Nascimento
 Julia Soares Catharino
 Maria Luíza Barcelos Mendes
@@ -7,85 +7,85 @@ Maria Luiza Cordeiro Lisboa
 Sarah De Moura Silva
 
 
-##Disciplina
+## Disciplina
 Desenvolvimento de Software
 
-#Descrição do Projeto
+# Descrição do Projeto
 
 O Sistema de Detetive Investigativo é uma aplicação desenvolvida em Java utilizando os conceitos de Programação Orientada a Objetos (POO). O sistema permite o gerenciamento de investigações criminais por meio do cadastro de casos, suspeitos, investigadores, pistas e interrogatórios.
 O projeto foi desenvolvido seguindo a arquitetura MVC (Model-View-Controller) e contempla conceitos como herança, polimorfismo, interfaces, classes abstratas, tratamento de exceções, coleções e persistência de dados.
 
-##Objetivos
+## Objetivos
 - Aplicar os conceitos estudados durante a disciplina.
 - Desenvolver um sistema organizado utilizando MVC.
 - Implementar relacionamentos entre classes.
 - Realizar persistência de dados em arquivos.
 - Demonstrar o uso de herança, interfaces e polimorfismo.
 
-#Funcionalidades
-##Casos
+# Funcionalidades
+## Casos
 - Cadastrar caso
 - Alterar caso
 - Excluir caso
 - Listar casos
 
-##Suspeitos
+## Suspeitos
 - Cadastrar suspeito
 - Alterar suspeito
 - Excluir suspeito
 - Listar suspeitos
 
-##Investigadores
+## Investigadores
 - Cadastrar investigador
 - Alterar investigador
 - Excluir investigador
 - Listar investigadores
 
-##Pistas
+## Pistas
 - Cadastrar pista
 - Alterar pista
 - Excluir pista
 - Listar pistas
 
-##Interrogatórios
+## Interrogatórios
 - Registrar interrogatório
 - Alterar interrogatório
 - Excluir interrogatório
 - Listar interrogatórios
 
 
-#Conceitos Aplicados
-#Herança
+# Conceitos Aplicados
+# Herança
 
-##Classe abstrata:
+## Classe abstrata:
 Pessoa
 
-##Classes filhas:
+## Classes filhas:
 Suspeito
 Investigador
 Interface
 
-##Interface:
+## Interface:
 Investigavel
 
 Implementada por:
 Suspeito
 Caso
 
-#Polimorfismo
+# Polimorfismo
 - Sobrescrita de métodos da classe Pessoa.
 - Sobrecarga de métodos de busca e cadastro.
 
-#Coleções
+# Coleções
 Utilização de ArrayList para armazenamento das entidades do sistema.
 
-#Persistência
+# Persistência
 Os dados são gravados em arquivos para evitar perda de informações ao encerrar a aplicação.
 
-#Tratamento de Exceções
+# Tratamento de Exceções
 Utilização de blocos try-catch para validações e manipulação de erros.
 
-#Estrutura do Projeto
+# Estrutura do Projeto
 src/
 ├── model/
 ├── controller/
@@ -94,17 +94,17 @@ src/
 ├── interfaces/
 └── Main.java
 
-#Relacionamentos
-##Associação
+# Relacionamentos
+## Associação
 Investigador ↔ Caso
 
-##Agregação
+## Agregação
 Caso ↔ Suspeito
 
-##Composição
+## Composição
 Caso ↔ Pista
 
-#Responsabilidades da Equipe
+# Responsabilidades da Equipe
 Integrante                  	          Responsabilidade
 Julia Soares Catharino      	          CRUD de Suspeitos, classe Suspeito, persistência de suspeitos
 Sarah De Moura Silva                    CRUD de Investigadores, classe Investigador, classe abstrata Pessoa
@@ -127,13 +127,13 @@ A IA foi utilizada principalmente para:
 
 A implementação final, as decisões de desenvolvimento, os testes e a integração das funcionalidades foram realizados pelos integrantes da equipe, utilizando a IA apenas como ferramenta de apoio ao aprendizado, planejamento e validação dos requisitos do projeto.
 
-#Como Executar
+# Como Executar
 - Clone o repositório.
 - Abra o projeto no IntelliJ IDEA ou VS Code.
 - Execute a classe Main.java.
 - Utilize o menu principal para acessar as funcionalidades.
 
-#Tecnologias Utilizadas
+# Tecnologias Utilizadas
 - Java
 - Git
 - GitHub
@@ -141,9 +141,9 @@ A implementação final, as decisões de desenvolvimento, os testes e a integra�
 - MVC
 - Repositório
 
-##Link do GitHub:
+## Link do GitHub:
 
 (Adicionar link após criação do repositório)
 
-##Observações
+## Observações
 Este projeto foi desenvolvido para fins acadêmicos como requisito avaliativo da disciplina de Desenvolvimento de Software.
