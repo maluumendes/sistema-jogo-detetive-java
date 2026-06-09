@@ -6,7 +6,7 @@
 | Julia Soares Catharino | [@juliascatharino](https://github.com/juliascatharino) |
 | Maria Luíza Barcelos Mendes | [@maluumendes](https://github.com/maluumendes) |
 | Maria Luiza Cordeiro Lisboa | [@mluizacl](https://github.com/mluizacl) |
-| Sarah De Moura Silva | [@]() |
+| Sarah De Moura Silva | [@kiwiil1](https://github.com/kiwiil1) |
 
 
 ## Disciplina
