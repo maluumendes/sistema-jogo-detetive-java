@@ -86,13 +86,13 @@ Os dados são gravados em arquivos para evitar perda de informações ao encerra
 Utilização de blocos try-catch para validações e manipulação de erros.
 
 # Estrutura do Projeto
-src/
-├── model/
-├── controller/
-├── view/
-├── persistence/
-├── interfaces/
-└── Main.java
+src/<br>
+├── model/<br>
+├── controller/<br>
+├── view/<br>
+├── persistence/<br>
+├── interfaces/<br>
+└── Main.java<br>
 
 # Relacionamentos
 ## Associação
@@ -105,7 +105,8 @@ Caso ↔ Suspeito
 Caso ↔ Pista
 
 # Responsabilidades da Equipe
-|Integrante                  	            | Responsabilidade |
+| Integrante                  	          | Responsabilidade |
+|-----------------------------------------|------------------|
 | Julia Soares Catharino      	          | CRUD de Suspeitos, classe Suspeito, persistência de suspeitos |
 | Sarah De Moura Silva                    | CRUD de Investigadores, classe Investigador, classe abstrata Pessoa |
 | Maria Luiza Barcelos Mendes            	| CRUD de Casos, relacionamentos entre casos, suspeitos e investigadores |
