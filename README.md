@@ -105,12 +105,12 @@ Caso ↔ Suspeito
 Caso ↔ Pista
 
 # Responsabilidades da Equipe
-Integrante                  	          Responsabilidade
-- Julia Soares Catharino      	          CRUD de Suspeitos, classe Suspeito, persistência de suspeitos
-- Sarah De Moura Silva                    CRUD de Investigadores, classe Investigador, classe abstrata Pessoa
-- Maria Luiza Barcelos Mendes            	CRUD de Casos, relacionamentos entre casos, suspeitos e investigadores
-- Maria Luiza Cordeiro Lisboa             CRUD de Pistas, composição entre Caso e Pista, persistência de pistas
-- Érica Gonçalves Domingos Do Nascimento  CRUD de Interrogatórios, interface Investigavel, menu principal e integração do sistema
+|Integrante                  	            | Responsabilidade |
+| Julia Soares Catharino      	          | CRUD de Suspeitos, classe Suspeito, persistência de suspeitos |
+| Sarah De Moura Silva                    | CRUD de Investigadores, classe Investigador, classe abstrata Pessoa |
+| Maria Luiza Barcelos Mendes            	| CRUD de Casos, relacionamentos entre casos, suspeitos e investigadores |
+| Maria Luiza Cordeiro Lisboa             | CRUD de Pistas, composição entre Caso e Pista, persistência de pistas |
+| Érica Gonçalves Domingos Do Nascimento  | CRUD de Interrogatórios, interface Investigavel, menu principal e integração do sistema |
 
 
 ## Utilização de Inteligência Artificial
@@ -143,7 +143,7 @@ A implementação final, as decisões de desenvolvimento, os testes e a integra�
 
 ## Link do GitHub:
 
-[https://github.com/maluumendes/sistema-jogo-detetive-java.git]((https://github.com/maluumendes/sistema-jogo-detetive-java.git))
+[Repositório do Projeto](https://github.com/maluumendes/sistema-jogo-detetive-java.git)
 
 ## Observações
 Este projeto foi desenvolvido para fins acadêmicos como requisito avaliativo da disciplina de Desenvolvimento de Software.
