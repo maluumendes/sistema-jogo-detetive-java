@@ -1,10 +1,12 @@
 # Sistema de Detetive Investigativo
 ## Integrantes
-- Érica Gonçalves Domingos Do Nascimento
-- Julia Soares Catharino
-- Maria Luíza Barcelos Mendes
-- Maria Luiza Cordeiro Lisboa
-- Sarah De Moura Silva
+| Integrante | GitHub |
+|------------|--------|
+| Érica Gonçalves Domingos Do Nascimento |[@erica-svg703](https://github.com/erica-svg703)  |
+| Julia Soares Catharino | [@juliascatharino](https://github.com/juliascatharino) |
+| Maria Luíza Barcelos Mendes | [@maluumendes](https://github.com/maluumendes) |
+| Maria Luiza Cordeiro Lisboa | [@mluizacl](https://github.com/mluizacl) |
+| Sarah De Moura Silva | [@]() |
 
 
 ## Disciplina
