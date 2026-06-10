@@ -22,7 +22,7 @@ public class CasoView {
         if(investigadorController.listarInvestigadores().isEmpty()){
             System.out.println("Cadastre um investigador antes de criar um caso.");
             return;
-        }*/
+        }
 
         System.out.println("=== CADASTRO DE CASO ===\n");
         int id;
@@ -53,6 +53,11 @@ public class CasoView {
     }
 
     public void listarCaso(){
+        if(casoController.listarCaso().isEmpty()){
+            System.out.println("Não há casos registrados!");
+            return;
+        }
+
         for (Caso c : casoController.listarCaso()) {
             System.out.println("ID: " + c.getId() + " | " + c.getTitulo() + " | " + c.getStatus());
         }
@@ -167,4 +172,62 @@ public class CasoView {
             System.out.println("Caso não encontrado!");
         }
     }
+
+
+    public void menuCasos(){
+        int op;
+
+        do {
+
+
+            System.out.println("\n========================");
+            System.out.println("     MENU CASOS");
+            System.out.println("\n========================");
+            System.out.println("1 - Cadastrar Caso");
+            System.out.println("2 - Listar Casos");
+            System.out.println("3 - Exibir Detalhes");
+            System.out.println("4 - Editar Caso");
+            System.out.println("5 - Remover Caso");
+            System.out.println("0 - Voltar");
+            System.out.println("=========================");
+
+            op = InputHelper.lerNumInt(">> Opção: ");
+
+            verificarOp(op);
+        } while (op != 0);
+    }
+
+    public void verificarOp(int op){
+        switch (op) {
+
+            case 1:
+                cadastrarCaso();
+                break;
+
+            case 2:
+                listarCaso();
+                break;
+
+            case 3:
+                exibirDetalhes();
+                break;
+
+            case 4:
+                editarCaso();
+                break;
+
+            case 5:
+                removerCaso();
+                break;
+
+            case 0:
+                System.out.println("Voltando...");
+                break;
+
+            default:
+                System.out.println("Opção inválida!");
+                break;
+        }
+    }
+
 }
