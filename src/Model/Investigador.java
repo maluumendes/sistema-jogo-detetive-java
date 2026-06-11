@@ -1,64 +1,82 @@
 package Model;
 
-public class Investigador {
+public class Investigador extends Pessoa{
 
-    private int id;
-    private String nome;
-    private String cargo;
-    private String departamento;
+    private int limiteCasosSimultaneos;
+    private int casosAtivosAtuais;
+    private String metodoInvestigacao;
+    private String itemDeInvestigacaoFavorito;
 
-    public Investigador(int id, String nome, String cargo, String departamento) {
-        this.id = id;
-        this.nome = nome;
-        this.cargo = cargo;
-        this.departamento = departamento;
+    public Investigador(String nome, String ocupacao, int idade, int limiteCasosSimultaneos, int casosAtivosAtuais, String metodoInvestigacao, String itemDeInvestigacaoFavorito ) {
+        super(nome, ocupacao, idade);
+        this.limiteCasosSimultaneos = limiteCasosSimultaneos;
+        this.casosAtivosAtuais = 0;
+        this.metodoInvestigacao = metodoInvestigacao;
+        this.itemDeInvestigacaoFavorito = itemDeInvestigacaoFavorito;
     }
 
-    public int getId() {
-        return id;
+    public boolean podeAssumirNovoCaso() {
+        if (this.casosAtivosAtuais < this.limiteCasosSimultaneos) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void alocarAoCaso() {
+        if (podeAssumirNovoCaso()) {
+            this.casosAtivosAtuais++;
+        }
     }
 
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
-    public void mostrarInfo() {
-        System.out.println("\n==================");
-        System.out.println("ID: " + id);
-        System.out.println("Nome: " + nome);
-        System.out.println("Cargo: " + cargo);
-        System.out.println("Departamento: " + departamento);
+    public void desvincularDoCaso() {
+        if (this.casosAtivosAtuais > 0) {
+            this.casosAtivosAtuais--;
+        }
     }
 
     @Override
-    public String toString() {
-        return nome;
+    public String gerarResumoDetalhado() {
+        return "Investigador{" +
+                "Nome: '" + getNome() + '\'' +
+                ", Idade: " + getIdade() +
+                ", Ocupação: '" + getOcupacao() + '\'' +
+                ", Limite de Casos: " + limiteCasosSimultaneos +
+                ", Casos Ativos: " + casosAtivosAtuais +
+                ", Método: '" + metodoInvestigacao + '\'' +
+                ", Item Favorito: '" + itemDeInvestigacaoFavorito + '\'' +
+                '}';
+    }
+
+    public String getItemDeInvestigacaoFavorito() {
+        return itemDeInvestigacaoFavorito;
+    }
+
+    public void setItemDeInvestigacaoFavorito(String itemDeInvestigacaoFavorito) {
+        this.itemDeInvestigacaoFavorito = itemDeInvestigacaoFavorito;
+    }
+
+    public String getMetodoInvestigacao() {
+        return metodoInvestigacao;
+    }
+
+    public void setMetodoInvestigacao(String metodoInvestigacao) {
+        this.metodoInvestigacao = metodoInvestigacao;
+    }
+
+    public int getCasosAtivosAtuais() {
+        return casosAtivosAtuais;
+    }
+
+    public void setCasosAtivosAtuais(int casosAtivosAtuais) {
+        this.casosAtivosAtuais = casosAtivosAtuais;
+    }
+
+    public int getLimiteCasosSimultaneos() {
+        return limiteCasosSimultaneos;
+    }
+
+    public void setLimiteCasosSimultaneos(int limiteCasosSimultaneos) {
+        this.limiteCasosSimultaneos = limiteCasosSimultaneos;
     }
 }
