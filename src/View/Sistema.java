@@ -3,7 +3,12 @@ package View;
 import Util.InputHelper;
 
 public class Sistema {
+     private InvestigadorController investigadorController =
+            new InvestigadorController();
 
+    private InvestigadorView investigadorView =
+            new InvestigadorView(investigadorController);
+    
     private CasoView casoView;
 
     public void executar() {
