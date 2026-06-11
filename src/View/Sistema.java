@@ -29,7 +29,9 @@ public class Sistema {
                 casoView.menuCasos();
                 break;
 
-            //ADICIONAR OUTROS CASES
+            case 2:
+                investigadorView.menuInvestigadores();
+                break;
 
             case 0:
                 System.out.println("Deseja manter os dados?");
