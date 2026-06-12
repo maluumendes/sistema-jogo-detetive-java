@@ -29,6 +29,17 @@ public class Caso {
         this.pistas = new ArrayList<>();
     }
 
+    public Caso(int id, String titulo, Investigador investigador) {
+        this.id = id;
+        this.titulo = titulo;
+        this.status = "Aberto"; // Status padrão
+        this.investigadores = new ArrayList<>();
+        this.investigadores.add(investigador);
+    
+        this.suspeitos = new ArrayList<>();
+        this.pistas = new ArrayList<>();
+    }    
+
     public int getId() {
         return id;
     }
