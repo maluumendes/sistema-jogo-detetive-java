@@ -28,6 +28,8 @@ public class Suspeito extends Pessoa {
 
     @Override
     public String gerarResumoDetalhado() {
-        return "Suspeito [ID: " + id + " | Nome: " + getNome() + " | Álibi: " + alibi + " | Antecedentes: " + possuiAntecedentes + "]";
+        return "Suspeito [ID: " + id + " | Nome: " + getNome() + " | Idade: " + getIdade() + 
+               " | Ocupação: " + getOcupacao() + " | Álibi: " + alibi + 
+               " | Relação com Vítima: " + relacaoComVitima + " | Antecedentes: " + possuiAntecedentes + "]";
     }
 }
