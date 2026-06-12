@@ -188,7 +188,8 @@ public class CasoView {
             System.out.println("2 - Listar Casos");
             System.out.println("3 - Exibir Detalhes");
             System.out.println("4 - Editar Caso");
-            System.out.println("5 - Remover Caso");
+            System.out.println("5 - Gerenciar Pistas");
+            System.out.println("6 - Remover Caso");
             System.out.println("0 - Voltar");
             System.out.println("=========================");
 
@@ -198,38 +199,44 @@ public class CasoView {
         } while (op != 0);
     }
 
-    public void verificarOp(int op){
-        switch (op) {
+   public void verificarOp(int op){
 
-            case 1:
-                cadastrarCaso();
-                break;
+    switch (op) {
 
-            case 2:
-                listarCaso();
-                break;
+        case 1:
+            cadastrarCaso();
+            break;
 
-            case 3:
-                exibirDetalhes();
-                break;
+        case 2:
+            listarCaso();
+            break;
 
-            case 4:
-                editarCaso();
-                break;
+        case 3:
+            exibirDetalhes();
+            break;
 
-            case 5:
-                removerCaso();
-                break;
+        case 4:
+            editarCaso();
+            break;
 
-            case 0:
-                System.out.println("Voltando...");
-                break;
+        case 5:
+            menuPistas();
+            break;
 
-            default:
-                System.out.println("Opção inválida!");
-                break;
+        case 6:
+            removerCaso();
+            break;
+
+        case 0:
+            System.out.println("Voltando...");
+            break;
+
+        default:
+            System.out.println("Opção inválida!");
+            break;
         }
     }
+    
     public void cadastrarPista(int idCaso){
 
         int id = InputHelper.lerNumInt("ID da pista: ");
