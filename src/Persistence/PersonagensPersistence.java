@@ -10,6 +10,7 @@ public class PersonagensPersistence {
     private static final String ARQUIVO_INVESTIGADORES = "investigadores.txt";
     private static final String ARQUIVO_SUSPEITOS = "suspeitos.txt";
 
+    // Salva a lista de investigadores no arquivo .txt
     public static void salvarInvestigadores(List<Investigador> lista) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVO_INVESTIGADORES))) {
             for (Investigador inv : lista) {
@@ -28,6 +29,7 @@ public class PersonagensPersistence {
         }
     }
 
+    // Salva a lista de suspeitos no arquivo .txt
     public static void salvarSuspeitos(List<Suspeito> lista) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVO_SUSPEITOS))) {
             for (Suspeito susp : lista) {
@@ -45,6 +47,7 @@ public class PersonagensPersistence {
         }
     }
 
+    // Carrega os investigadores guardados no arquivo txt ao iniciar o programa
     public static List<Investigador> carregarInvestigadores() {
         List<Investigador> lista = new ArrayList<>();
         File arquivo = new File(ARQUIVO_INVESTIGADORES);
@@ -74,6 +77,7 @@ public class PersonagensPersistence {
         return lista;
     }
 
+    // Carrega os suspeitos guardados no arquivo txt ao iniciar o programa
     public static List<Suspeito> carregarSuspeitos() {
         List<Suspeito> lista = new ArrayList<>();
         File arquivo = new File(ARQUIVO_SUSPEITOS);
@@ -88,4 +92,17 @@ public class PersonagensPersistence {
                 int id = Integer.parseInt(dados[0]);
                 String nome = dados[1];
                 String ocupacao = dados[2];
-                int idade = Integer.parseInt
+                int idade = Integer.parseInt(dados[3]);
+                String alibi = dados[4];
+                String relacao = dados[5];
+                boolean antecedentes = Boolean.parseBoolean(dados[6]);
+
+                Suspeito susp = new Suspeito(id, nome, ocupacao, idade, alibi, relacao, antecedentes);
+                lista.add(susp);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao carregar suspeitos: " + e.getMessage());
+        }
+        return lista;
+    }
+}
