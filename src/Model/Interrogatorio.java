@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 public class Interrogatorio {
     private int id;
@@ -19,14 +19,19 @@ public class Interrogatorio {
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
+
     public int getIdCaso() { return idCaso; }
     public void setIdCaso(int idCaso) { this.idCaso = idCaso; }
+
     public int getIdInvestigador() { return idInvestigador; }
     public void setIdInvestigador(int idInvestigador) { this.idInvestigador = idInvestigador; }
+
     public int getIdSuspeito() { return idSuspeito; }
     public void setIdSuspeito(int idSuspeito) { this.idSuspeito = idSuspeito; }
+
     public String getData() { return data; }
     public void setData(String data) { this.data = data; }
+
     public String getDepoimento() { return depoimento; }
     public void setDepoimento(String depoimento) { this.depoimento = depoimento; }
 
