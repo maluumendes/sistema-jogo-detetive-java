@@ -26,7 +26,6 @@ public class Caso {
         this.pistas = new ArrayList<>();
     }
 
-    // Construtor alternativo para compatibilidade dinâmica de vínculos simples
     public Caso(int id, String titulo, Investigador investigador) {
         this(id, titulo, "Sem descrição.", "Não informado.", "Não informada.", "Aberto", new ArrayList<>());
         if (investigador != null) {
