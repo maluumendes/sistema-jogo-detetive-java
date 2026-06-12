@@ -1,23 +1,23 @@
-package View;
+    package View;
 
-import Controller.CasoController;
-import Controller.InvestigadorController;
-import Model.Caso;
-import Model.Investigador;
-import Model.Pista;
-import Util.InputHelper;
+    import Controller.CasoController;
+    import Controller.InvestigadorController;
+    import Controller.PersonagensController;
+    import Model.Caso;
+    import Model.Investigador;
+    import Model.Pista;
+    import Util.InputHelper;
 
-public class CasoView {
+    public class CasoView {
 
+        private CasoController casoController;
+        private PersonagensController personagensController; // Alterado aqui
 
-    private CasoController casoController = new CasoController();
-    private InvestigadorController investigadorController;
-
-    public CasoView(CasoController casoController, InvestigadorController investigadorController) {
-        this.casoController = casoController;
-        this.investigadorController = investigadorController;
-    }
-
+        public CasoView(CasoController casoController, PersonagensController personagensController) {
+            this.casoController = casoController;
+            this.personagensController = personagensController;
+        }
+    
     public void cadastrarCaso(){
 
         if(investigadorController.listarInvestigadores().isEmpty()){
