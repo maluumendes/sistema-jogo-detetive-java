@@ -52,7 +52,14 @@ public class Caso {
     public void setStatus(String status) { this.status = status; }
 
     public ArrayList<Investigador> getInvestigadores() { return investigadores; }
-    public void adicionarInvestigador(Investigador investigador) { investigadores.add(investigador); }
+    
+    // Método auxiliar para obter o primeiro investigador alocado (compatibilidade de lógica legada)
+    public Investigador getInvestigadorAlocado() {
+        if (!investigadores.isEmpty()) {
+            return investigadores.get(0);
+        }
+        return null;
+    }
 
     public ArrayList<Suspeito> getSuspeitos() { return suspeitos; }
     public void adicionarSuspeito(Suspeito suspeito) { suspeitos.add(suspeito); }
@@ -69,5 +76,10 @@ public class Caso {
         System.out.println("Data do Crime: " + dataCrime);
         System.out.println("Status: " + status);
         System.out.println("Investigadores alocados: " + investigadores);
+        if (suspeitos.isEmpty()) {
+            System.out.println("Suspeitos: Não há suspeitos cadastrados neste caso.");
+        } else {
+            System.out.println("Suspeitos: " + suspeitos);
+        }
     }
 }
