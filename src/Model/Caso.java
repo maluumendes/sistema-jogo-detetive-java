@@ -101,6 +101,17 @@ public class Caso {
         pistas.add(pista);
     }
 
+    public void removerPista(int idPista){
+
+    for(int i = 0; i < pistas.size(); i++){
+
+        if(pistas.get(i).getId() == idPista){
+            pistas.remove(i);
+            return;
+            }
+        }
+    }
+
     public void mostrarInfo(){
         System.out.println("\n=====================");
         System.out.println("CASO ID: " + getId());
