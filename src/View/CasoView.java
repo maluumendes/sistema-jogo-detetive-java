@@ -4,6 +4,7 @@ import Controller.CasoController;
 import Controller.InvestigadorController;
 import Model.Caso;
 import Model.Investigador;
+import Model.Pista;
 import Util.InputHelper;
 
 public class CasoView {
@@ -228,6 +229,112 @@ public class CasoView {
                 System.out.println("Opção inválida!");
                 break;
         }
+    }
+    public void cadastrarPista(int idCaso){
+
+        int id = InputHelper.lerNumInt("ID da pista: ");
+
+        String descricao = InputHelper.lerTexto("Descrição: ");
+
+        String local = InputHelper.lerTexto("Local encontrada: ");
+
+        Pista pista = new Pista(id, descricao, local);
+
+        if(casoController.adicionarPista(idCaso, pista)){
+            System.out.println("Pista cadastrada!");
+        }
+    }
+    
+    public void listarPistas(int idCaso){
+
+        Caso caso = casoController.buscarCaso(idCaso);
+
+        if(caso.getPistas().isEmpty()){
+
+            System.out.println("Nenhuma pista cadastrada.");
+                return;
+        }
+
+        for(Pista p : caso.getPistas()){
+            System.out.println(p);
+        }
+    }
+
+    public void editarPista(int idCaso){
+
+        int idPista = InputHelper.lerNumInt("ID da pista: ");
+
+        String descricao = InputHelper.lerTexto("Nova descrição: ");
+
+        if(casoController.editarPista(idCaso, idPista, descricao)){
+            System.out.println("Pista atualizada!");
+        }else{
+            System.out.println("Pista não encontrada!");
+        }
+    }
+
+    public void removerPista(int idCaso){
+
+        int idPista = InputHelper.lerNumInt("ID da pista: ");
+
+        if(casoController.removerPista(idCaso, idPista)){
+            System.out.println("Pista removida!");
+        }else{
+            System.out.println("Pista não encontrada!");
+        }
+    }
+
+    public void menuPistas(){
+
+        int idCaso = InputHelper.lerNumInt("ID do caso: ");
+
+        Caso caso = casoController.buscarCaso(idCaso);
+
+        if(caso == null){
+
+            System.out.println("Caso não encontrado!");
+            return;
+        }
+
+        int op;
+
+        do{
+
+            System.out.println("\n=== MENU PISTAS ===");
+            System.out.println("1 - Cadastrar pista");
+            System.out.println("2 - Listar pistas");
+            System.out.println("3 - Editar pista");
+            System.out.println("4 - Remover pista");
+            System.out.println("0 - Voltar");
+
+            op = InputHelper.lerNumInt(">> ");
+
+            switch(op){
+
+                case 1:
+                    cadastrarPista(idCaso);
+                    break;
+
+                case 2:
+                    listarPistas(idCaso);
+                    break;
+
+                case 3:
+                    editarPista(idCaso);
+                    break;
+
+                case 4:
+                    removerPista(idCaso);
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+            }
+
+        }while(op != 0);
     }
 
 }
