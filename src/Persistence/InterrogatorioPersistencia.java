@@ -1,11 +1,11 @@
-package repository;
+package Persistence;
 
-import model.Interrogatorio;
+import Model.Interrogatorio;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InterrogatorioDAO {
+public class InterrogatorioPersistencia {
     private final String FILE_PATH = "interrogatorios.txt";
 
     public void salvarTodos(List<Interrogatorio> lista) {
@@ -24,11 +24,11 @@ public class InterrogatorioDAO {
         File file = new File(FILE_PATH);
         if (!file.exists()) return lista;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String linha;
             while ((linha = br.readLine()) != null) {
                 if (linha.trim().isEmpty()) continue;
-                String[] dados = line.split(";");
+                String[] dados = linha.split(";");
                 Interrogatorio i = new Interrogatorio(
                     Integer.parseInt(dados[0]),
                     Integer.parseInt(dados[1]),
