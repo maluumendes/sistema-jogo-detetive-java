@@ -35,6 +35,7 @@ public class InvestigadorController {
         );
 
         persistencia.salvar(investigadores);
+        PersonagensPersistence.salvarInvestigadores(investigadores);
     }
 
     public ArrayList<Investigador> listarInvestigadores(){
