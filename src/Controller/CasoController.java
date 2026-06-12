@@ -121,5 +121,53 @@ public class CasoController {
 
         return false;
     }
+    public Pista buscarPista(int idCaso, int idPista){
 
+        Caso caso = buscarCaso(idCaso);
+
+        if(caso != null){
+
+            for(Pista p : caso.getPistas()){
+
+                if(p.getId() == idPista){
+                    return p;
+                }
+            }
+        }
+    
+        return null;
+    }
+    
+        public boolean editarPista(int idCaso, int idPista, String novaDescricao){
+
+            Pista pista = buscarPista(idCaso, idPista);
+
+            if(pista != null){
+
+                pista.setDescricao(novaDescricao);
+    
+                persistencia.salvar(casos);
+    
+                return true;
+        }
+
+        return false;
+    }
+    
+        public boolean removerPista(int idCaso, int idPista){
+
+            Caso caso = buscarCaso(idCaso);
+
+            if(caso != null){
+
+                caso.removerPista(idPista);
+
+                persistencia.salvar(casos);
+
+                return true;
+        }
+
+        return false;
+    }
+    
 }
