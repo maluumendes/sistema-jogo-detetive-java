@@ -107,6 +107,19 @@ public class CasoController {
 
         return false;
     }
+    public boolean adicionarPista(int idCaso, Pista pista){
 
+        Caso caso = buscarCaso(idCaso);
+
+        if(caso != null){
+
+            caso.adicionarPista(pista);
+            persistencia.salvar(casos);
+
+            return true;
+        }
+
+        return false;
+    }
 
 }
