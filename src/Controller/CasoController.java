@@ -5,169 +5,241 @@ import Model.Investigador;
 import Model.Pista;
 import Model.Suspeito;
 import Persistence.CasoPersistencia;
+import Util.LoggerSistema;
 
 import java.util.ArrayList;
 
 public class CasoController {
 
-    private ArrayList<Caso> casos = new ArrayList<>();
-    private CasoPersistencia persistencia = new CasoPersistencia();
+    private ArrayList<Caso> casos;
+    private CasoPersistencia persistencia;
 
-    public void validarId(int id) throws Exception{
+    public CasoController() {
+        persistencia = new CasoPersistencia();
+        casos = persistencia.carregar();
 
-        if (buscarCaso(id) != null){
-            throw new Exception("Já existe um caso com esse ID.");
+        if (casos == null) {
+            casos = new ArrayList<>();
         }
     }
 
-    public void adicionarCaso(int id, String titulo, String descricao, String localCrime, String dataCrime, String status, ArrayList<Investigador> investigadores){
-        casos.add(new Caso(id, titulo, descricao, localCrime, dataCrime, status, investigadores));
-
-        persistencia.salvar(casos);
+    public void validarId(int id) throws Exception {
+        if (buscarCaso(id) != null) {
+            throw new Exception("Já existe um caso com este ID.");
+        }
     }
 
-    public ArrayList<Caso> listarCaso(){
+    public void adicionarCaso(int id, String titulo, String descricao, String localCrime, String dataCrime, String status, ArrayList<Investigador> investigadores) {
+
+        Caso novoCaso = new Caso(id, titulo, descricao, localCrime, dataCrime, status, investigadores);
+        casos.add(novoCaso);
+        persistencia.salvar(casos);
+
+        LoggerSistema.registrar("Caso cadastrado. ID: " + id + " | Título: " + titulo);
+    }
+
+    public ArrayList<Caso> listarCasos() {
         return casos;
     }
 
-    public Caso buscarCaso(int id){
-
-        for (Caso c : casos){
-            if (c.getId() == id){
-                return c;
+    public Caso buscarCaso(int id) {
+        for (Caso caso : casos) {
+            if (caso.getId() == id) {
+                return caso;
             }
         }
-
         return null;
     }
 
-    public boolean editarTitulo(int id, String novoTitulo){
-        Caso c = buscarCaso(id);
-
-        if (c != null){
-            c.setTitulo(novoTitulo);
+    public boolean editarTitulo(int id, String novoTitulo) {
+        Caso caso = buscarCaso(id);
+        if (caso != null) {
+            caso.setTitulo(novoTitulo);
             persistencia.salvar(casos);
+
+            LoggerSistema.registrar("Título alterado do Caso ID " + id);
             return true;
         }
         return false;
     }
 
-    public boolean editarDescricao(int id, String novaDesc){
-        Caso c = buscarCaso(id);
+    public boolean editarDescricao(int id, String novaDescricao) {
+        Caso caso = buscarCaso(id);
 
-        if (c != null){
-            c.setDescricao(novaDesc);
+        if (caso != null) {
+            caso.setDescricao(novaDescricao);
             persistencia.salvar(casos);
+
+            LoggerSistema.registrar("Descrição alterada do Caso ID " + id);
             return true;
         }
         return false;
     }
 
-    public boolean editarLocalCrime(int id, String novoLocal){
-        Caso c = buscarCaso(id);
+    public boolean editarLocalCrime(int id, String novoLocal) {
+        Caso caso = buscarCaso(id);
 
-        if (c != null){
-            c.setLocalCrime(novoLocal);
+        if (caso != null) {
+            caso.setLocalCrime(novoLocal);
             persistencia.salvar(casos);
+
+            LoggerSistema.registrar("Local do crime alterado no Caso ID " + id);
             return true;
         }
         return false;
     }
 
-    public boolean editarDataCrime(int id, String novaData){
-        Caso c = buscarCaso(id);
+    public boolean editarDataCrime(int id, String novaData) {
+        Caso caso = buscarCaso(id);
 
-        if (c != null){
-            c.setDataCrime(novaData);
+        if (caso != null) {
+            caso.setDataCrime(novaData);
             persistencia.salvar(casos);
+
+            LoggerSistema.registrar("Data do crime alterada no Caso ID " + id);
             return true;
         }
         return false;
     }
 
-    public boolean editarStatus(int id, String novoStatus){
-        Caso c = buscarCaso(id);
+    public boolean editarStatus(int id, String novoStatus) {
+        Caso caso = buscarCaso(id);
 
-        if (c != null){
-            c.setStatus(novoStatus);
+        if (caso != null) {
+            caso.setStatus(novoStatus);
             persistencia.salvar(casos);
+
+            LoggerSistema.registrar("Status alterado no Caso ID " + id);
             return true;
         }
         return false;
     }
 
-    public boolean removerCaso(int id){
-        for (int i = 0; i < casos.size(); i++) {
-            if (casos.get(i).getId() == id){
-                casos.remove(i);
-                persistencia.salvar(casos);
-                return true;
-            }
-        }
+    public boolean removerCaso(int id) {
+        Caso caso = buscarCaso(id);
 
+        if (caso != null) {
+            casos.remove(caso);
+            persistencia.salvar(casos);
+
+            LoggerSistema.registrar("Caso removido. ID: " + id);
+            return true;
+        }
         return false;
     }
-    public boolean adicionarPista(int idCaso, Pista pista){
+
+    public boolean adicionarSuspeito(int idCaso, Suspeito suspeito) {
+        Caso caso = buscarCaso(idCaso);
+
+        if (caso != null) {
+            caso.adicionarSuspeito(suspeito);
+            persistencia.salvar(casos);
+
+            LoggerSistema.registrar("Suspeito " + suspeito.getNome() + " vinculado ao Caso " + idCaso);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean adicionarInvestigador(int idCaso, Investigador investigador) {
 
         Caso caso = buscarCaso(idCaso);
 
-        if(caso != null){
+        if (caso != null) {
+            caso.adicionarInvestigador(investigador);
+            persistencia.salvar(casos);
 
+            LoggerSistema.registrar("Investigador " + investigador.getNome() + " vinculado ao Caso " + idCaso);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removerInvestigador(int idCaso, int idInvestigador) {
+
+        Caso caso = buscarCaso(idCaso);
+
+        if (caso != null) {
+            boolean removido = caso.removerInvestigador(idInvestigador);
+
+            if (removido) {
+                persistencia.salvar(casos);
+                LoggerSistema.registrar("Investigador removido do Caso " + idCaso);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean adicionarPista(int idCaso, Pista pista) {
+        Caso caso = buscarCaso(idCaso);
+
+        if (caso != null) {
             caso.adicionarPista(pista);
             persistencia.salvar(casos);
 
+            LoggerSistema.registrar("Pista adicionada ao Caso " + idCaso);
             return true;
         }
-
         return false;
     }
-    public Pista buscarPista(int idCaso, int idPista){
 
+    public Pista buscarPista(int idCaso, int idPista) {
         Caso caso = buscarCaso(idCaso);
 
-        if(caso != null){
-
-            for(Pista p : caso.getPistas()){
-
-                if(p.getId() == idPista){
-                    return p;
+        if (caso != null) {
+            for (Pista pista : caso.getPistas()) {
+                if (pista.getId() == idPista) {
+                    return pista;
                 }
             }
         }
-    
         return null;
     }
-    
-        public boolean editarPista(int idCaso, int idPista, String novaDescricao){
 
-            Pista pista = buscarPista(idCaso, idPista);
+    public boolean editarPista(int idCaso, int idPista, String novaDescricao) {
+        Pista pista = buscarPista(idCaso, idPista);
 
-            if(pista != null){
+        if (pista != null) {
+            pista.setDescricao(novaDescricao);
+            persistencia.salvar(casos);
 
-                pista.setDescricao(novaDescricao);
-    
-                persistencia.salvar(casos);
-    
-                return true;
+            LoggerSistema.registrar("Pista editada. ID: " + idPista);
+            return true;
         }
-
         return false;
     }
-    
-        public boolean removerPista(int idCaso, int idPista){
 
-            Caso caso = buscarCaso(idCaso);
+    public boolean removerPista(int idCaso, int idPista) {
+        Caso caso = buscarCaso(idCaso);
 
-            if(caso != null){
+        if (caso != null) {
+            boolean removida = caso.removerPista(idPista);
 
-                caso.removerPista(idPista);
-
+            if (removida) {
                 persistencia.salvar(casos);
 
+                LoggerSistema.registrar("Pista removida. ID: " + idPista);
                 return true;
+            }
         }
-
         return false;
     }
-    
+
+    public ArrayList<Caso> listarCasosAbertos() {
+
+        ArrayList<Caso> lista = new ArrayList<>();
+
+        for (Caso caso : casos) {
+            if (caso.getStatus().equalsIgnoreCase("Aberto")) {
+                lista.add(caso);
+            }
+        }
+        return lista;
+    }
+
+    public void excluirArquivos() {
+        persistencia.excluirArquivos();
+    }
+
 }
